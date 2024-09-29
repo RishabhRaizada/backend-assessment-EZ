@@ -21,6 +21,15 @@ Test cases are included in the `test.py` file. You can run the tests using the f
 python3 manage.py test
 
 
+## How do you plan on deploying this to the production environment?
+
+- **Hosting:** Choose a hosting provider that supports Django applications (e.g., Heroku, AWS, DigitalOcean).
+- **Environment Variables:** Set up necessary environment variables for database credentials and secret keys.
+- **Database:** Configure a production-ready database (e.g., PostgreSQL) and migrate the database.
+- **Static Files:** Use a service like Amazon S3 or configure Nginx to serve static files.
+- **Security:** Implement HTTPS for secure connections, and ensure that the API is protected against common vulnerabilities (e.g., SQL injection, CSRF).
+- **Monitoring:** Set up monitoring tools to track application performance and errors.
+
 ### Features
 
 - User authentication (sign up and login).
