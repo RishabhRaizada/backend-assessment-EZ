@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "952fc5bf-4ed3-4831-ba29-995137c9757f",
+		"name": "EZ-Backend-Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26921865"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:8000/api/signup/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"rishabhclient3\",\n    \"password\": \"clientpass\",\n    \"role\": \"client\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/signup/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"signup",
+						""
+					]
+				},
+				"description": "Endpoint: POST /api/signup/\nName: signup\nDescription: Allows a new client to register an account.\nRequest Body:\nusername (string): The desired username of the user.\nemail (string): The user's email address.\npassword (string): The user's password.\nResponse:\nSuccess (201 Created):\nmessage (string): Confirmation message indicating successful registration.\nError (400 Bad Request):\nerror (string): Description of the validation error.\n\nNOTE- Only Clients can create a account \nOPS Username: rishabhadmin\nOPS Password: opspass\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/login/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"rishabhclient3\",\n    \"password\": \"clientpass\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				},
+				"description": "Endpoint: POST /api/login/\nName: login\nDescription: Authenticates a user and provides access tokens.\nRequest Body:\nusername (string): The user's username.\npassword (string): The user's password.\nResponse:\nSuccess (200 OK):\naccess_token (string): JWT access token for authenticated requests.\nrefresh_token (string): JWT refresh token for obtaining new access tokens.\nError (401 Unauthorized):\nerror (string): Description of the authentication error."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/upload-file/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 7f12252e9655da8c2595904f25124981d038ecd1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/rishabhraizada/Downloads/QuestionBank 1.docx"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/upload-file/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"upload-file",
+						""
+					]
+				},
+				"description": "Endpoint: POST /api/upload-file/\nName: upload-file\nDescription: Allows an authenticated Ops User to upload a file.\nRequest Body:\nfile (file): The file to be uploaded (supported formats: .pptx, .docx, .xlsx).\nHeaders:\nAuthorization: Bearer token obtained from the login endpoint.\nResponse:\nSuccess (201 Created):\nfile_id (string): Unique identifier for the uploaded file.\nmessage (string): Confirmation message indicating successful upload.\nError (403 Forbidden):\nerror (string): Description of the access error."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/list-files/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 2211c87aa68c00040893d16a7906d2a0c45147ec",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/list-files/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"list-files",
+						""
+					]
+				},
+				"description": "Endpoint: GET /api/list-files/\nName: list-files\nDescription: Allows an authenticated Client User to list all uploaded files.\nHeaders:\nAuthorization: Bearer token obtained from the login endpoint.\nResponse:\nSuccess (200 OK):\nfiles (array): Array of file objects, each containing:\nfile_id (string): Unique identifier for the file.\nfilename (string): Name of the uploaded file.\nError (403 Forbidden):\nerror (string): Description of the access error."
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/download-file/1/",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 2211c87aa68c00040893d16a7906d2a0c45147ec",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/download-file/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"download-file",
+						"1",
+						""
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Token 2211c87aa68c00040893d16a7906d2a0c45147ec",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Endpoint: GET /api/download-file/<str:file_id>/\nName: download-file\nDescription: Allows a Client User to download a file using its unique identifier.\nPath Parameters:\nfile_id (string): Unique identifier for the file to be downloaded.\nHeaders:\nAuthorization: Bearer token obtained from the login endpoint.\nResponse:\nSuccess (200 OK):\nReturns the file content for download.\nError (404 Not Found):\nerror (string): Description indicating the file was not found.\nError (403 Forbidden):\nerror (string): Description of the access error."
+			},
+			"response": []
+		}
+	]
+}
