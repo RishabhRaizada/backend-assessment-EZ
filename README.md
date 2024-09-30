@@ -17,18 +17,38 @@ This project is a secure file-sharing system that enables two types of users: **
 ## Testing
 
 Test cases are included in the `test.py` file. You can run the tests using the following command:
-
+```python
 python3 manage.py test
-
+```
 
 ## How do you plan on deploying this to the production environment?
 
-- **Hosting:** Choose a hosting provider that supports Django applications (e.g., Heroku, AWS, DigitalOcean).
-- **Environment Variables:** Set up necessary environment variables for database credentials and secret keys.
-- **Database:** Configure a production-ready database (e.g., PostgreSQL) and migrate the database.
-- **Static Files:** Use a service like Amazon S3 or configure Nginx to serve static files.
-- **Security:** Implement HTTPS for secure connections, and ensure that the API is protected against common vulnerabilities (e.g., SQL injection, CSRF).
-- **Monitoring:** Set up monitoring tools to track application performance and errors.
+## 1. Prerequisites
+- Python 3.10+
+- Django
+- Gunicorn (for serving the app)
+- Nginx (reverse proxy)
+- PostgreSQL/MongoDB (database)
+- Git (version control)
+- SSL/TLS Certificate (for HTTPS)
+- Cloud provider (AWS, DigitalOcean, Heroku, etc.)
+
+---
+
+## 2. Deployment Steps
+
+1. **Cloud Infrastructure**: Set up a virtual machine (AWS EC2, DigitalOcean Droplet, etc.) and install required packages (Python, pip, PostgreSQL/MongoDB, Nginx).
+
+2. **Clone and Configure**: Clone the repository, set up a virtual environment, and install dependencies. Configure environment variables, database settings, and static file paths.
+
+3. **Database Migration**: Run Django migrations to create the necessary database schema and ensure your database is properly configured.
+
+4. **Gunicorn Setup**: Install and configure Gunicorn as the WSGI server for running the Django application in production.
+
+5. **Nginx Configuration**: Set up Nginx as a reverse proxy to serve the Django app via Gunicorn. Ensure SSL is configured for secure HTTPS access.
+
+6. **System Monitoring**: Enable systemd services for Gunicorn and monitor the application. Set up server firewalls and logging for production.
+
 
 ### Features
 
